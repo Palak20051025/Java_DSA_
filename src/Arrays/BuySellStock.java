@@ -1,9 +1,8 @@
 package Arrays;
 
 import java.util.Scanner;
-//Used Kadane's Algorithm
 
-public class MaximumSubarraySum {
+public class BuySellStock {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the length of an array : ");
@@ -15,18 +14,16 @@ public class MaximumSubarraySum {
             arr[i] = sc.nextInt();
         }
 
-        int sum = 0;
-        int max = 0;
+        int min = arr[0];
+        int profit = 0;
 
-        for(int i=0;i<n;i++){
-            sum += arr[i];
-
-            if(sum < 0){
-                sum = 0;
-            }
-            if(sum > max){
-                max = sum;
-            }
+        for(int i=1;i<n;i++){
+            int cost = arr[i] - min;
+            profit = Math.max(profit, cost);
+            min = Math.min(min, arr[i]);
         }
+
+        System.out.println("Maximum profit gained is : " +profit);
+
     }
 }

@@ -1,9 +1,9 @@
 package Arrays;
 
+import java.util.ArrayList;
 import java.util.Scanner;
-//Used Kadane's Algorithm
 
-public class MaximumSubarraySum {
+public class LeadersInArray {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the length of an array : ");
@@ -15,18 +15,16 @@ public class MaximumSubarraySum {
             arr[i] = sc.nextInt();
         }
 
-        int sum = 0;
-        int max = 0;
+        ArrayList<Integer> list = new ArrayList<>();
+        int largest = Integer.MIN_VALUE;
 
-        for(int i=0;i<n;i++){
-            sum += arr[i];
-
-            if(sum < 0){
-                sum = 0;
-            }
-            if(sum > max){
-                max = sum;
+        for(int i=n-1;i>=0;i--){
+            if(arr[i] > largest){
+                list.add(arr[i]);
+                largest = arr[i];
             }
         }
+
+        System.out.println("Leaders in the array are : " +list.toString());
     }
 }

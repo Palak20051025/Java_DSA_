@@ -1,9 +1,8 @@
 package Arrays;
 
 import java.util.Scanner;
-//Used Kadane's Algorithm
 
-public class MaximumSubarraySum {
+public class SubarraySumEqualsToK {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the length of an array : ");
@@ -13,20 +12,6 @@ public class MaximumSubarraySum {
 
         for(int i=0;i<n;i++){
             arr[i] = sc.nextInt();
-        }
-
-        int sum = 0;
-        int max = 0;
-
-        for(int i=0;i<n;i++){
-            sum += arr[i];
-
-            if(sum < 0){
-                sum = 0;
-            }
-            if(sum > max){
-                max = sum;
-            }
         }
     }
 }
