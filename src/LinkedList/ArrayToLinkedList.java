@@ -4,16 +4,16 @@ import java.util.Scanner;
 
 class Node{
     int data;
-    Node node;
+    Node next;
 
     Node(int data, Node node){
         this.data = data;
-        this.node = node;
+        this.next = node;
     }
 
     Node(int data){
         this.data = data;
-        this.node = null;
+        this.next = null;
     }
 }
 
@@ -23,7 +23,7 @@ public class ArrayToLinkedList {
         Node mover = head;
         for(int i=0;i<arr.length;i++){
             Node temp = new Node(arr[i]);
-            mover.node = temp;
+            mover.next = temp;
             mover = temp;
         }
         return head;
@@ -41,7 +41,11 @@ public class ArrayToLinkedList {
         }
 
         Node head = Conversion(arr);
-        System.out.println("Head of the linked list : ");
-        System.out.println(head.data);
+        Node temp = head;
+        System.out.println("Elements of the linked list : ");
+        while(temp != null){
+            System.out.println(temp.data + " ");
+            temp = temp.next;
+        }
     }
 }
