@@ -3,21 +3,29 @@ package BinaryTree;
 import java.util.Scanner;
 
 public class BalancedBinaryTree {
-    public static boolean Balanced()
+    public static boolean isBalanced(Node root){
+        return Height(root) != -1;
+    }
     public static int Height(Node root){
         if(root == null){
             return 0;
         }
 
         int lh = Height(root.left);
+        if(lh == -1){
+            return -1;
+        }
         int rh = Height(root.right);
+        if(rh == -1){
+            return -1;
+        }
 
         int height = Math.abs(lh - rh);
 
-        if(height <= 1){
-            return true;
+        if(height > 1){
+            return -1;
         }
-        return false;
+        return Math.max(lh, rh)+1;
     }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -29,8 +37,12 @@ public class BalancedBinaryTree {
         root.right.left = new Node(6);
         root.right.right = new Node(7);
 
-        boolean balance = Height(root);
-        System.out.println("Tree is balanced or not : " +balance);
+        if(isBalanced(root)){
+            System.out.println("Tree is balanced");
+        }
+        else{
+            System.out.println("Tree is not balanced");
+        }
 
     }
 }
