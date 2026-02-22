@@ -37,6 +37,7 @@ public class BalancedBinaryTree {
         root.right.left = new Node(6);
         root.right.right = new Node(7);
 
+        System.out.println("The result is : ");
         if(isBalanced(root)){
             System.out.println("Tree is balanced");
         }
